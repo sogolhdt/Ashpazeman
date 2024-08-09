@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ExceptionHandlerContract::class, Handler::class);
+        // $this->app->singleton(ExceptionHandlerContract::class, Handler::class);
         
     }
 

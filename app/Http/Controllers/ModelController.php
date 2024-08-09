@@ -26,8 +26,16 @@ class ModelController extends Controller
         $this->request=$request;
         $this->requestFillable=$this->request->only($this->fillable);
     }
-    public function validate(array $rules): void{
+    protected function validate(array $rules): void{
         $this->request->validate($rules);
+    }
+    protected function getOrder(Request $request)
+    {
+
+        $orderBy = $request->query('orderBy', 'id');
+        $sort = $request->query('sort', 'desc');
+
+        return [$orderBy => $sort];
     }
     
 }

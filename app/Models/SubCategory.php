@@ -5,23 +5,25 @@ namespace App\Models;
 use App\Traits\ModelsTrait\GeneralCrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Category extends Model
+class SubCategory extends Model
 {
     use HasFactory;
     use GeneralCrudTrait;
-
     protected $fillable = [
         'title',
-        'image',
-        'orderّ'
+        'category_id',
+        'order',
+        'image'
     ];
-    public function subCategories(): HasMany
+    public function category(): BelongsTo
     {
-        return $this->hasMany(SubCategory::class);
-    } public function recipes(): HasMany
-    {
+        return $this->belongsTo(Category::class);
+    }
+    public function recipes():HasMany{
         return $this->hasMany(Recipe::class);
     }
+    
 }
