@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\ModelsTrait\GeneralCrudTrait;
 use App\Traits\Responses\ResourceWithTrait;
 use App\Traits\Responses\FailedResponseTrait;
 use App\Traits\Responses\SuccessResponseTrait;
@@ -13,7 +12,6 @@ use Illuminate\Http\Request;
 class ModelController extends Controller
 {
     use ResourceWithTrait , FailedResponseTrait, SuccessResponseTrait;
-    use GeneralCrudTrait;
     protected $model;
     protected $request;
     protected $fillable;
@@ -27,6 +25,9 @@ class ModelController extends Controller
         $this->fillable=$this->model->getFillable();
         $this->request=$request;
         $this->requestFillable=$this->request->only($this->fillable);
+    }
+    public function validate(array $rules): void{
+        $this->request->validate($rules);
     }
     
 }
