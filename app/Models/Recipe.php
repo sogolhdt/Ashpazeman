@@ -24,6 +24,7 @@ class Recipe extends Model
         'file_id',
         'rate',
         'views',
+        'likes',
     ];
     public function category(): BelongsTo
     {

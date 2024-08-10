@@ -29,6 +29,8 @@ return new class extends Migration
             $table->unsignedSmallInteger('file_id')->nullable();
             $table->unsignedTinyInteger('rate')->default(0);
             $table->unsignedSmallInteger('views')->default(0);
+            $table->unsignedSmallInteger('likes')->default(0);
+
             $table->timestamps();
         });
     }
